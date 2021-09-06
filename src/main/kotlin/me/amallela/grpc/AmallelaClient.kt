@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.collect
 class AmallelaClient(private val channel: ManagedChannel) : Closeable {
     private val stub: AmallelaGrpcKt.AmallelaCoroutineStub = AmallelaGrpcKt.AmallelaCoroutineStub(channel)
 
-    suspend fun reverse(name: String) {
+    suspend fun makeGrpcCalls(msg: String) {
         println("### reverse ###")
-        val message = Message.newBuilder().setMsg(name).build()
+        val message = Message.newBuilder().setMsg(msg).build()
         val resp1 = stub.reverse(message)
         println("Received: ${resp1.msg}")
 
@@ -51,5 +51,5 @@ suspend fun main(args: Array<String>) {
 
     val client = AmallelaClient(channel)
 
-    client.reverse("amallela")
+    client.makeGrpcCalls("amallela")
 }
