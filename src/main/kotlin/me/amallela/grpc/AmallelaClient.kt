@@ -14,7 +14,7 @@ class AmallelaClient(private val channel: ManagedChannel) : Closeable {
         val resp1 = stub.reverse(message)
         println("Received: ${resp1.msg}")
 
-        val resp2 = stub.reverseStream(message)
+        val resp2 = stub.shuffle(message)
         resp2.collect {
             value -> println("Received: ${value.msg}")
         }

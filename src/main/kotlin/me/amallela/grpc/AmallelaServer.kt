@@ -37,7 +37,7 @@ class AmallelaServer {
             .setMsg(message.msg.reversed())
             .build()
 
-        override fun reverseStream(message: Message): Flow<Message> = getShuffled(message.msg, 5).asFlow()
+        override fun shuffle(message: Message): Flow<Message> = getShuffled(message.msg, 5).asFlow()
 
         private fun getShuffled(msg: String, n: Int): Collection<Message> {
             val msgs = mutableListOf<Message>()
