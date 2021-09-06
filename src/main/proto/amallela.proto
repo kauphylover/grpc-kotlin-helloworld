@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package me.amallela.grpc;
+
+option java_multiple_files = true;
+
+service Amallela {
+  rpc reverse(Message) returns (Message) {}
+
+  rpc reverseStream(Message) returns (stream Message) {}
+
+  rpc Base64ClientStream(stream Message) returns (Message) {}
+
+  rpc Base64BothStream(stream Message) returns (stream Message) {}
+
+}
+
+message Message {
+  string msg = 1;
+}
